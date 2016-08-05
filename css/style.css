@@ -1,0 +1,231 @@
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/31c5b4");
+
+
+@font-face {font-family: 'FrizQuadrataCom-Bold';src: url('../fonts/31C5B4_0_0.eot');src: url('../fonts/31C5B4_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/31C5B4_0_0.woff2') format('woff2'),url('../fonts/31C5B4_0_0.woff') format('woff'),url('../fonts/31C5B4_0_0.ttf') format('truetype');}
+
+
+@font-face {
+    font-family: 'maison';
+    src: url('../fonts/maisonneuemono-webfont.woff2') format('woff2'),
+         url('../fonts/maisonneuemono-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+h1 {
+  font-family: 'FrizQuadrataCom-Bold', serif;
+  letter-spacing: 0.5rem;
+}
+
+ul.corners > li {
+  font-family: 'FrizQuadrataCom-Bold', serif;
+}
+
+body,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: 'maison', sans-serif;
+  letter-spacing: 0.15rem;
+}
+
+nav .sub-menu li {
+  font-family: 'maison', sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+}
+
+p {
+  font-size: 12px;
+}
+
+.outline {
+  text-transform: uppercase;
+  color: black;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+h2.subhead {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+}
+
+ul {
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+}
+nav ul.corners li {
+  list-style: none;
+  text-transform: uppercase;
+}
+nav ul.corners li.menu-item {
+  pointer-events: initial;
+}
+nav ul.corners li.has-submenu:hover .sub-menu {
+  display: block;
+}
+nav ul.corners > li {
+  position: absolute;
+}
+nav ul.corners > li:nth-child(1), nav ul.corners > li:nth-child(2) {
+  top: 20px;
+}
+nav ul.corners > li:nth-child(1), nav ul.corners > li:nth-child(3) {
+  left: 20px;
+}
+nav ul.corners > li:nth-child(2), nav ul.corners > li:nth-child(4) {
+  right: 20px;
+  text-align: right;
+}
+nav ul.corners > li:nth-child(3), nav ul.corners > li:nth-child(4) {
+  bottom: 20px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+nav ul.corners > li .sub-menu {
+  display: none;
+}
+
+.smooth {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.2, 0.84, 0.5, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0.84, 0.5, 1);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: translate3d(0px, 0px, 0px);
+          transform: translate3d(0px, 0px, 0px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+  box-sizing: border-box;
+}
+
+ul.projects li.project {
+  margin-top: 100px;
+}
+ul.projects li.project .project-wrapper {
+  position: relative;
+  text-align: center;
+}
+ul.projects li.project .project-wrapper .subhead {
+  position: absolute;
+  width: 100%;
+  top: -1rem;
+}
+ul.projects li.project .project-wrapper .thumb {
+  position: absolute;
+  visibility: hidden;
+  top: 50%;
+  text-align: center;
+  z-index: -1;
+  width: 500px;
+  height: auto;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+}
+ul.projects li.project .project-wrapper:hover {
+  cursor: pointer;
+}
+ul.projects li.project .project-wrapper:hover .outline {
+  color: black;
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+ul.projects li.project .project-wrapper:hover .thumb {
+  visibility: visible;
+}
+
+.single-project .content {
+  position: fixed;
+  z-index: 9;
+}
+
+.single-project {
+  padding: 5rem 0;
+}
+.single-project .column {
+  min-height: 1px;
+  position: relative;
+}
+.single-project .title {
+  white-space: nowrap;
+}
+.roles {
+  font-weight: bold;
+  font-size: 0.375rem;
+  text-transform: uppercase;
+}
+.single-project .images > img {
+  margin-bottom: 1rem;
+}
+.single-project .back {
+    position: fixed;
+    top: 50%;
+    left: -1rem;
+
+    transform: rotate(-90deg) translateY(50%);
+    -webkit-transform: rotate(-90deg) translateY(50%);
+    -moz-transform: rotate(-90deg) translateY(50%);
+}
+.images .twoUp img:first-child {
+    display: inline-flex;
+    width: 70%;
+    width: calc(70% - 0.5rem);
+    float: left;
+    padding-right: 15px;
+}
+
+.images .twoUp img:last-child {
+    display: inline-flex;
+    width: 30%;
+    width: calc(30% - 0.5rem);
+    float: left;
+    margin-left: 1rem;
+}
+
+.images img[data-shadow="true"] {
+    box-shadow: 1px 1px 0.5rem rgba(0,0,0,0.25);
+}
+
+.back:hover {
+  cursor: pointer;
+}
+
+/*need mQ*/
+.single-project .images {
+  padding-left: 15px;
+}
+.single-project .padded {
+  padding: 0 75px;
+}
