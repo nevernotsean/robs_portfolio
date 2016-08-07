@@ -132,7 +132,7 @@ var app = {
         '</div>' +
       '</li>'
       $projectComponent.append(output)
-      if ( i === 4 ) {
+      if (i === 4) {
         // console.log($('ul.projects li').length)
         break
       }
@@ -163,60 +163,53 @@ var app = {
     for (var i = 0; i < self.currentProject.fields.assets.length; i++) {
       var thisItem = self.currentProject.fields.assets[i]
       var dropShadow = thisItem.fields.applyDropShadow
-
-      // register Asset Namespaces
-      var photo = thisItem.fields.photo
-      var mobile = thisItem.fields.mockupMobile
-      var vimID = thisItem.fields.vimID
-
-      console.log(thisItem)
-
-      for (var i = 0; i < thisItem.fields.length; i++) {
-        asset = thisItem.fields[i]
-      }
-
-      // var rowAssets = []
-      // if (photo) rowAssets.push(photo)
-      // if (mobile) rowAssets.push(mobile)
-      // if (vimID) rowAssets.push(vimID)
-
-
-
-      var imgURL = photo.fields.file.url
-
-      var rowClass, h, w, imgRatio, mh, mw
-      var assetImg = ''
+      var imgURL = ''
+      var mobileImgURL = ''
+      var vimID = ''
+      var row = ''
+      var img = ''
       var mobileImg = ''
-
-      // create ratio
-      h = thisItem.fields.photo.fields.file.details.image.height
-      w = thisItem.fields.photo.fields.file.details.image.width
-      imgRatio = 'style="padding-bottom: '+ h/w * 100 +'%; height: 0;"'
-
-      photoImg = '<img data-shadow="' + dropShadow + '" src="' + imgURL + '"/>'
+      var vim = ''
 
       // Define Row Layout
-      rowClass = 'oneAsset'
+      var rowClass = 'oneAsset'
 
-      if (mobile) {
-        // define Layout
-        rowClass = 'twoUp'
-        // mobile Image
-        mobileImg = '<img data-shadow="' + dropShadow + '" src="' + mobile.fields.file.url + '"/>'
+      // register Asset Namespaces
+      var fields = thisItem.fields
 
-        // New ratio padding for lazy load
-        mh = thisItem.fields.mockupMobile.fields.file.details.image.height
-        mw = thisItem.fields.mockupMobile.fields.file.details.image.width
-        debugger
-        imgRatio = 'style="padding-bottom: '+ (h + mh)/(w + mw) * 100 +'%; height: 0;"'
+      if (fields.vimId) vimID = fields.vimId
+      if (fields.photo) imgURL = fields.photo.fields.file.url
+      if (fields.mockupMobile) mobileImgURL = fields.mockupMobile.fields.file.url
+
+      if (vimID) {
+
+        rowClass = 'video'
+        vim = '<div class="overlay" data-vimeoid="' + vimID + '">' +
+                // '<iframe src="http://player.vimeo.com/video/' + vimID + '?api=1&player_id=video" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="video"></iframe>' +
+                '<div class="playpause start"></div>' +
+              '</div>'
+
+      } else if (imgURL) {
+        img = '<img data-shadow="' + dropShadow + '" src="' + imgURL + '"/>'
+
+        if (mobileImgURL) {
+          rowClass = 'twoUp'
+          mobileImg = '<img data-shadow="' + dropShadow + '" src="' + mobileImgURL + '"/>'
+        }
       }
-      row = '<div '+ imgRatio +' class="' + rowClass + '">' + assetImg + mobileImg + '</div>'
+
+      row = '<div class="' + rowClass + '">' + img + mobileImg + vim + '</div>'
 
       self.$images.append(row)
     }
 
     // initialize lazySizes
     lazySizes.init();
+
+    // initialize vimeos
+    $('.video .overlay').each(function (){
+      self.vimeoHandler(this)
+    })
 
     // Defer sticky until content is loaded
     // $(document).one('load', function () {
@@ -274,7 +267,7 @@ var app = {
     var self = this
     var tl = new TimelineLite()
     var t = self.globalSeconds
-    var imagesArr = self.$images.find('img')
+    var imagesArr = self.$images.find('> *')
     var contentArr = self.$singlePage.find('.content > *')
 
     tl
@@ -334,6 +327,33 @@ var app = {
         opacity: 1,
         delay: delay
       })
+  },
+  vimeoHandler: function (el) {
+    var id = $(el).attr('data-vimeoid')
+
+    var options = {
+        id: id,
+        width: 640
+    }
+    var player = new Vimeo.Player(el, options)
+    debugger
+    player.ready().then(function () {
+      player.on('ended', onFinish)
+    })
+    $('.playpause').click(function () {
+      player.getPaused().then(function (paused) {
+        if (!paused) {
+          player.pause()
+          $('.playpause').removeClass('pause')
+        } else {
+          player.play()
+          $('.playpause').addClass('pause')
+        }
+      })
+    })
+    function onFinish (id) {
+      $('.playpause').removeClass('pause')
+    }
   },
   // Utilities
   getRandom: function (min, max) {
