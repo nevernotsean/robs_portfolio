@@ -34,7 +34,7 @@ h6,
 p,
 span {
   font-family: 'maison', sans-serif;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0;
 }
 
 nav .sub-menu li {
@@ -86,6 +86,9 @@ nav ul.corners li {
   list-style: none;
   text-transform: uppercase;
 }
+nav ul.corners > li:hover {
+  cursor: pointer;
+}
 nav ul.corners li.menu-item {
   pointer-events: initial;
 }
@@ -95,13 +98,13 @@ nav ul.corners li.has-submenu:hover .sub-menu {
 nav ul.corners > li {
   position: absolute;
 }
-nav ul.corners > li:nth-child(1), nav ul.corners > li:nth-child(2) {
+nav ul.corners > li:nth-child(1), nav ul.corners > li:nth-child(2), nav ul.corners > li.close {
   top: 20px;
 }
 nav ul.corners > li:nth-child(1), nav ul.corners > li:nth-child(3) {
   left: 20px;
 }
-nav ul.corners > li:nth-child(2), nav ul.corners > li:nth-child(4) {
+nav ul.corners > li:nth-child(2), nav ul.corners > li:nth-child(4), nav ul.corners > li.close {
   right: 20px;
   text-align: right;
 }
@@ -114,24 +117,27 @@ nav ul.corners > li .sub-menu {
   display: none;
 }
 
-.smooth {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  -webkit-transition: all 0.5s cubic-bezier(0.2, 0.84, 0.5, 1);
-  transition: all 0.5s cubic-bezier(0.2, 0.84, 0.5, 1);
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  -webkit-transform: translate3d(0px, 0px, 0px);
-          transform: translate3d(0px, 0px, 0px);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  -ms-perspective: 1000;
-  perspective: 1000;
-  box-sizing: border-box;
+/*SPP CORNERS*/
+
+nav ul.corners > li.spp {
+  display: none;
 }
+
+nav ul.corners > li.prev, nav ul.corners > li.next {
+  bottom: 20px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+nav ul.corners > li.prev {
+  left: 20px;
+}
+
+nav ul.corners > li.next {
+  right: 20px;
+}
+
+/*PROJECT LIST*/
 
 ul.projects li.project {
   margin-top: 100px;
@@ -170,6 +176,8 @@ ul.projects li.project .project-wrapper:hover .thumb {
   visibility: visible;
 }
 
+/*SPP*/
+
 .single-project .content {
   position: fixed;
   z-index: 9;
@@ -184,6 +192,7 @@ ul.projects li.project .project-wrapper:hover .thumb {
 }
 .single-project .title {
   white-space: nowrap;
+  text-transform: uppercase;
 }
 .roles {
   font-weight: bold;
@@ -226,16 +235,12 @@ ul.projects li.project .project-wrapper:hover .thumb {
     box-shadow: 1px 1px 0.5rem rgba(0,0,0,0.25);
 }
 
-.back:hover {
-  cursor: pointer;
-}
-
 /*need mQ*/
 .single-project .images {
   padding-left: 15px;
 }
 .single-project .padded {
-  padding: 0 75px;
+  padding: 0 60px;
 }
 
 /*custom toggle play button for vimeo*/

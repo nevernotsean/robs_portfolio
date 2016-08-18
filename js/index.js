@@ -86,6 +86,27 @@ var app = {
 
     self.animProjectClose()
   },
+  locationRead: function () {
+      var self = this
+
+      var currentLocation = window.location.hash
+
+      if (currentLocation) {
+        var el = $('.projects [data-location="' + currentLocation + '"]')[0]
+        self.handleGetProject().bind(el)
+      }
+  },
+  locationWrite: function () {
+    var self = this
+    console.log(self.currentProject)
+    var el = $('[data-project-id="' + self.currentProject.sys.id + '"]')
+
+    // var url = window.origin
+    var url = window.origin + window.pathname // Temporary Until Live
+    newLocation = el.attr('data-location')
+
+    window.location = url + '#' + newLocation
+  },
   clearProject: function() {
     var self = this
 
@@ -109,7 +130,7 @@ var app = {
       var id = projects[i].sys.id
       var roles = project.roles.join(' / ')
       var thumb = project.previewThumbnail.fields.file.url
-      var output = '<li class="project" data-project-id="' + id + '">' +
+      var output = '<li class="project" data-location="' + i + '" data-project-id="' + id + '">' +
         '<div class="project-wrapper">' +
           '<h1 class="outline">' + project.title + '</h1>' +
           '<h2 class="subhead roles">' + roles + '</h2>' +
@@ -124,7 +145,7 @@ var app = {
       var id = projects[i].sys.id
       var roles = projectItem.roles.join(' / ')
       var thumb = projectItem.previewThumbnail.fields.file.url
-      var output = '<li class="project" data-project-id="' + id + '">' +
+      var output = '<li class="project" data-location="' + i + '" data-project-id="' + id + '">' +
         '<div class="project-wrapper">' +
           '<h1 class="outline">' + projectItem.title + '</h1>' +
           '<h2 class="subhead">' + roles + '</h2>' +
@@ -139,6 +160,7 @@ var app = {
     }
     self.resizeRefresh()
     self.bindListeners()
+    self.locationWrite()
   },
   buildProject: function () {
     var self = this
