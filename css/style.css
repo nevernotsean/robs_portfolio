@@ -14,7 +14,6 @@
 }
 h1 {
   font-family: 'FrizQuadrataCom-Bold', serif;
-  letter-spacing: 0.5rem;
 }
 
 ul.corners > li {
@@ -47,12 +46,23 @@ p {
   font-size: 12px;
 }
 
+a {
+  font-weight: bold;
+  text-decoration: underline;
+  color: black;
+}
+
+a:hover {
+  color: grey;
+}
+
 .outline {
   text-transform: uppercase;
   color: black;
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
+  font-size: 4.5rem;
 }
 
 h2.subhead {
@@ -71,6 +81,10 @@ ul {
 }
 ul li {
   list-style: none;
+}
+
+.sub-menu {
+  margin: 0;
 }
 
 nav {
@@ -108,10 +122,29 @@ nav ul.corners > li:nth-child(2), nav ul.corners > li:nth-child(4), nav ul.corne
   right: 20px;
   text-align: right;
 }
-nav ul.corners > li:nth-child(3), nav ul.corners > li:nth-child(4) {
+nav ul.corners > li:nth-child(3), nav ul.corners > li:nth-child(4){
   bottom: 20px;
+}
+.wrapper {
+  position: relative;
+}
+.rotate {
+  position: absolute;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+nav ul.corners > li:nth-child(3) ul, nav ul.corners > li:nth-child(4) ul {
+  margin-bottom: 2rem;
+}
+
+nav ul.corners > li:nth-child(3) a {
+  bottom: 0;
+}
+
+nav ul.corners > li:nth-child(4) a {
+  right: 0;
+  bottom: 0;
 }
 nav ul.corners > li .sub-menu {
   display: none;
@@ -123,12 +156,6 @@ nav ul.corners > li.spp {
   display: none;
 }
 
-nav ul.corners > li.prev, nav ul.corners > li.next {
-  bottom: 20px;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
 nav ul.corners > li.prev {
   left: 20px;
 }
@@ -137,10 +164,15 @@ nav ul.corners > li.next {
   right: 20px;
 }
 
+nav ul.corners a:not(.underline) {
+  text-decoration: none;
+  font-weight: normal;
+}
+
 /*PROJECT LIST*/
 
 ul.projects li.project {
-  margin-top: 100px;
+  margin-top: 55px;
 }
 ul.projects li.project .project-wrapper {
   position: relative;
@@ -149,7 +181,7 @@ ul.projects li.project .project-wrapper {
 ul.projects li.project .project-wrapper .subhead {
   position: absolute;
   width: 100%;
-  top: -1rem;
+  top: -2rem;
 }
 ul.projects li.project .project-wrapper .thumb {
   position: absolute;
@@ -194,9 +226,12 @@ ul.projects li.project .project-wrapper:hover .thumb {
   white-space: nowrap;
   text-transform: uppercase;
 }
+.single-project .credits * {
+  font-size: 10px;
+}
 .roles {
   font-weight: bold;
-  font-size: 0.375rem;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .single-project .images {

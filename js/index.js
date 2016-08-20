@@ -28,7 +28,7 @@ var app = {
     })
 
     // set animation lengths
-    self.globalSeconds = 0.5
+    self.globalSeconds = 0.25
 
     self.$singlePage = $('.single-project')
     self.$title = self.$singlePage.find('.title')
@@ -63,11 +63,9 @@ var app = {
       }
     )
   },
-  handleGetProject: function () {
+  handleGetProject: function (targetID) {
     var self = app
-    var target = $(this)
-    var targetID = $(this).data('project-id')
-
+    // console.dir(self.projectData)
     // loop through all project data until we have a match
     // Only one call is made to contentful
     for (var i = 0; i < self.projectData.length; i++) {
@@ -98,7 +96,7 @@ var app = {
   },
   locationWrite: function () {
     var self = this
-    console.log(self.currentProject)
+    // console.log(self.currentProject)
     var el = $('[data-project-id="' + self.currentProject.sys.id + '"]')
 
     // var url = window.origin
@@ -160,7 +158,7 @@ var app = {
     }
     self.resizeRefresh()
     self.bindListeners()
-    self.locationWrite()
+    // self.locationRead()
   },
   buildProject: function () {
     var self = this
@@ -169,7 +167,7 @@ var app = {
     var roles = self.currentProject.fields.roles.join(' / ')
     var title = self.currentProject.fields.title
     var desc = self.currentProject.fields.description
-    var credits = self.currentProject.fields.credits
+    var credits = self.currentProject.fields.projectCredits
 
     // markdown
     if ( desc ) desc = marked(desc)
@@ -182,9 +180,10 @@ var app = {
     self.$images.html('')
 
     // Begin Row Loop
+    console.log(self.currentProject.fields)
     for (var i = 0; i < self.currentProject.fields.assets.length; i++) {
       var thisItem = self.currentProject.fields.assets[i]
-      var dropShadow = thisItem.fields.applyDropShadow
+      var dropShadow = ''
       var imgURL = ''
       var mobileImgURL = ''
       var vimID = ''
@@ -192,16 +191,21 @@ var app = {
       var img = ''
       var mobileImg = ''
       var vim = ''
+      var mockupMobile = ''
 
       // Define Row Layout
       var rowClass = 'oneAsset'
 
       // register Asset Namespaces
       var fields = thisItem.fields
+      // console.log(i)
 
-      if (fields.vimId) vimID = fields.vimId
-      if (fields.photo) imgURL = fields.photo.fields.file.url
-      if (fields.mockupMobile) mobileImgURL = fields.mockupMobile.fields.file.url
+      if (fields.vimId && fields.vimId !== 'undefined') vimID = fields.vimId
+      if (fields.photo && fields.photo !== 'undefined') imgURL = fields.photo.fields.file.url
+      if (fields.mockupMobile && fields.mockupMobile != 'undefined') {
+        mockupMobile = fields.mockupMobile
+        mobileImgURL = mockupMobile.fields.file.url
+      }
 
       if (vimID) {
 
@@ -212,6 +216,8 @@ var app = {
               '</div>'
 
       } else if (imgURL) {
+        if (fields.applyDropShadow) dropShadow = fields.applyDropShadow
+
         img = '<img data-shadow="' + dropShadow + '" src="' + imgURL + '"/>'
 
         if (mobileImgURL) {
@@ -281,7 +287,10 @@ var app = {
       self.positionThumb(this)
     })
 
-    $('li.project').on('click', self.handleGetProject)
+    $('li.project').on('click', function () {
+      var targetID = $(this).data('project-id')
+      self.handleGetProject(targetID)
+    })
 
     $('.home').on('click', self.handleGoHome)
   },
@@ -358,7 +367,7 @@ var app = {
         width: 640
     }
     var player = new Vimeo.Player(el, options)
-    debugger
+    // debugger
     player.ready().then(function () {
       player.on('ended', onFinish)
     })
