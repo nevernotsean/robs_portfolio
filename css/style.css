@@ -103,7 +103,7 @@ nav ul.corners li {
 nav ul.corners > li:hover {
   cursor: pointer;
 }
-nav ul.corners li.menu-item {
+nav ul.corners li{
   pointer-events: initial;
 }
 nav ul.corners li.has-submenu:hover .sub-menu {
