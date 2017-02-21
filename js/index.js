@@ -194,6 +194,7 @@ var app = {
             var vimID = ''
             var row = ''
             var img = ''
+            var assetCaptionMkdn = ''
             var mobileImg = ''
             var vim = ''
             var autoplay = ''
@@ -209,10 +210,17 @@ var app = {
                 // console.log(i)
 
             if (fields.vimId && fields.vimId !== 'undefined') vimID = fields.vimId
-            if (fields.photo && fields.photo !== 'undefined') imgURL = fields.photo.fields.file.url
+            if (fields.photo && fields.photo !== 'undefined') {
+                imgURL = fields.photo.fields.file.url
+            }
             if (fields.mockupMobile && fields.mockupMobile != 'undefined') {
                 mockupMobile = fields.mockupMobile
                 mobileImgURL = mockupMobile.fields.file.url
+            }
+
+            if (fields.imageCaption && fields.imageCaption !== 'undefined') {
+              assetCaptionMkdn = marked(fields.imageCaption)
+              assetCaptionMkdn = '<div class="imageCaption">' + assetCaptionMkdn + '</div>'
             }
 
             if (vimID) {
@@ -236,7 +244,7 @@ var app = {
                 }
             }
 
-            row = '<div class="' + rowClass + '">' + img + mobileImg + vim + '</div>'
+            row = '<div class="' + rowClass + '">' + img + assetCaptionMkdn + mobileImg + vim + '</div>'
 
             self.$images.append(row)
         }

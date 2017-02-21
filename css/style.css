@@ -69,7 +69,7 @@ a:hover {
 h2.subhead {
   text-transform: uppercase;
   font-size: 12px;
-  
+
 }
 
 body {
@@ -407,4 +407,8 @@ and (max-device-width : 480px) {
     top:0;
     z-index:200;
   }
+}
+
+.imageCaption {
+    margin: 1rem 0;
 }
