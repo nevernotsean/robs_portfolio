@@ -62,12 +62,14 @@ a:hover {
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
-  font-size: 4.5rem;
+  font-size: 5.5rem;
+  line-height: 1;
 }
 
 h2.subhead {
   text-transform: uppercase;
   font-size: 12px;
+  
 }
 
 body {
@@ -172,7 +174,7 @@ nav ul.corners a:not(.underline) {
 /*PROJECT LIST*/
 
 ul.projects li.project {
-  margin-top: 55px;
+  margin-top: 80px;
 }
 ul.projects li.project .project-wrapper {
   position: relative;
@@ -181,7 +183,8 @@ ul.projects li.project .project-wrapper {
 ul.projects li.project .project-wrapper .subhead {
   position: absolute;
   width: 100%;
-  top: -2rem;
+  top: -2.3rem;
+  height: 70px;
 }
 ul.projects li.project .project-wrapper .thumb {
   position: absolute;
@@ -216,7 +219,7 @@ ul.projects li.project .project-wrapper:hover .thumb {
 }
 
 .single-project {
-  padding: 5rem 0;
+  padding: 4rem 0;
 }
 .single-project .column {
   min-height: 1px;
@@ -275,7 +278,7 @@ ul.projects li.project .project-wrapper:hover .thumb {
   padding-left: 15px;
 }
 .single-project .padded {
-  padding: 0 60px;
+  padding: 0 40px;
 }
 
 /*custom toggle play button for vimeo*/

@@ -249,6 +249,11 @@ var app = {
             self.vimeoHandler(this)
         })
 
+        // Defer sticky until content is loaded
+        // $(document).one('load', function () {
+        //     // console.log('done')
+        //     debugger
+        // })
         self.animProjectOpen()
     },
     stickyContent: function() {
@@ -406,17 +411,13 @@ var app = {
             autoplay: autoplay,
             loop: loop
         }
-
         var player = new Vimeo.Player(el, options)
         var $playpause = $(el).find('.playpause')
 
-        if ( autoplay ) $playpause.addClass('pause')
-
-        if ( !loop ) {
-          player.ready().then(function() {
-              player.on('ended', onFinish)
-          })
-        }
+        // debugger
+        player.ready().then(function() {
+            player.on('ended', onFinish)
+        })
 
         $playpause.click(function() {
             player.getPaused().then(function(paused) {
@@ -431,7 +432,7 @@ var app = {
         })
 
         function onFinish(id) {
-            $playpause.removeClass('pause')
+            $$playpause.removeClass('pause')
         }
     },
     // Utilities
