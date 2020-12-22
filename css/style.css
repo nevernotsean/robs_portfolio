@@ -1,16 +1,19 @@
 /* @import must be at top of file, otherwise CSS will not work */
-@import url("//hello.myfonts.net/count/31c5b4");
-
-
-@font-face {font-family: 'FrizQuadrataCom-Bold';src: url('../fonts/31C5B4_0_0.eot');src: url('../fonts/31C5B4_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/31C5B4_0_0.woff2') format('woff2'),url('../fonts/31C5B4_0_0.woff') format('woff'),url('../fonts/31C5B4_0_0.ttf') format('truetype');}
-
 
 @font-face {
-    font-family: 'maison';
-    src: url('../fonts/maisonneuemono-webfont.woff2') format('woff2'),
-         url('../fonts/maisonneuemono-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'FrizQuadrataCom-Bold';
+  src: url('../fonts/31C5B4_0_0.eot');
+  src: url('../fonts/31C5B4_0_0.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/31C5B4_0_0.woff2') format('woff2'), url('../fonts/31C5B4_0_0.woff') format('woff'),
+    url('../fonts/31C5B4_0_0.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'maison';
+  src: url('../fonts/maisonneuemono-webfont.woff2') format('woff2'),
+    url('../fonts/maisonneuemono-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 h1 {
   font-family: 'FrizQuadrataCom-Bold', serif;
@@ -69,7 +72,6 @@ a:hover {
 h2.subhead {
   text-transform: uppercase;
   font-size: 12px;
-
 }
 
 body {
@@ -105,7 +107,7 @@ nav ul.corners li {
 nav ul.corners > li:hover {
   cursor: pointer;
 }
-nav ul.corners li{
+nav ul.corners li {
   pointer-events: initial;
 }
 nav ul.corners li.has-submenu:hover .sub-menu {
@@ -114,17 +116,23 @@ nav ul.corners li.has-submenu:hover .sub-menu {
 nav ul.corners > li {
   position: absolute;
 }
-nav ul.corners > li:nth-child(1), nav ul.corners > li:nth-child(2), nav ul.corners > li.close {
+nav ul.corners > li:nth-child(1),
+nav ul.corners > li:nth-child(2),
+nav ul.corners > li.close {
   top: 20px;
 }
-nav ul.corners > li:nth-child(1), nav ul.corners > li:nth-child(3) {
+nav ul.corners > li:nth-child(1),
+nav ul.corners > li:nth-child(3) {
   left: 20px;
 }
-nav ul.corners > li:nth-child(2), nav ul.corners > li:nth-child(4), nav ul.corners > li.close {
+nav ul.corners > li:nth-child(2),
+nav ul.corners > li:nth-child(4),
+nav ul.corners > li.close {
   right: 20px;
   text-align: right;
 }
-nav ul.corners > li:nth-child(3), nav ul.corners > li:nth-child(4){
+nav ul.corners > li:nth-child(3),
+nav ul.corners > li:nth-child(4) {
   bottom: 20px;
 }
 .wrapper {
@@ -133,10 +141,11 @@ nav ul.corners > li:nth-child(3), nav ul.corners > li:nth-child(4){
 .rotate {
   position: absolute;
   -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-nav ul.corners > li:nth-child(3) ul, nav ul.corners > li:nth-child(4) ul {
+nav ul.corners > li:nth-child(3) ul,
+nav ul.corners > li:nth-child(4) ul {
   margin-bottom: 2rem;
 }
 
@@ -244,33 +253,35 @@ ul.projects li.project .project-wrapper:hover .thumb {
   margin-bottom: 1rem;
 }
 .single-project .back {
-    position: fixed;
-    top: 50%;
-    left: -1rem;
+  position: fixed;
+  top: 50%;
+  left: -1rem;
 
-    transform: rotate(-90deg) translateY(50%);
-    -webkit-transform: rotate(-90deg) translateY(50%);
-    -moz-transform: rotate(-90deg) translateY(50%);
+  transform: rotate(-90deg) translateY(50%);
+  -webkit-transform: rotate(-90deg) translateY(50%);
+  -moz-transform: rotate(-90deg) translateY(50%);
 }
-.images .twoUp, .images .oneAsset, .images .video {
+.images .twoUp,
+.images .oneAsset,
+.images .video {
   margin-bottom: 1rem;
 }
 .images .twoUp img:first-child {
-    display: inline-flex;
-    width: 70%;
-    width: calc(64% - 0.5rem);
-    padding-right: 15px;
+  display: inline-flex;
+  width: 70%;
+  width: calc(64% - 0.5rem);
+  padding-right: 15px;
 }
 
 .images .twoUp img:last-child {
-    display: inline-flex;
-    width: 30%;
-    width: calc(36% - 0.5rem);
-    margin-left: 1rem;
+  display: inline-flex;
+  width: 30%;
+  width: calc(36% - 0.5rem);
+  margin-left: 1rem;
 }
 
-.images img[data-shadow="true"] {
-    box-shadow: 1px 1px 0.5rem rgba(0,0,0,0.25);
+.images img[data-shadow='true'] {
+  box-shadow: 1px 1px 0.5rem rgba(0, 0, 0, 0.25);
 }
 
 /*need mQ*/
@@ -284,131 +295,120 @@ ul.projects li.project .project-wrapper:hover .thumb {
 /*custom toggle play button for vimeo*/
 
 .images .video {
-    position: relative;
+  position: relative;
 }
 
 /* set up the aspect ratio of the video */
 .overlay {
-  width:100%;
-  height:0;
-  padding-bottom:56.25%;
-  overflow:hidden;
-  position:relative;
-  margin:0 auto;
-  }
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
 /* hide the default video controls */
 .overlay iframe {
-  width:100%;
-  height:180%;
-  position:absolute;
-  left:0;
-  top:-40%;
-  z-index:-1;
-  }
+  width: 100%;
+  height: 180%;
+  position: absolute;
+  left: 0;
+  top: -40%;
+  z-index: -1;
+}
 /* Use CSS art to draw the 'Play / Pause' button */
 .playpause {
-  width:65px;
-  height:40px;
-  background: rgba(0,0,0,0.8);
-  border-radius:5px;
-  position:absolute;
-  left:0;
-  top:0;
-  right:0;
-  bottom:0;
-  margin:auto;
-  z-index:100;
-  opacity:1;
-  cursor:pointer;
+  width: 65px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 100;
+  opacity: 1;
+  cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  }
+}
 .playpause:before {
-  display:block;
-  content:"";
-  width:0;
-  height:0;
-  border-top:10px solid transparent;
-  border-bottom:10px solid transparent;
-  border-left:20px solid #fff;
-  position:absolute;
-  left:23px;
-  top:10px;
-  }
+  display: block;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid #fff;
+  position: absolute;
+  left: 23px;
+  top: 10px;
+}
 .playpause.pause {
-  opacity:0;
+  opacity: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  }
+}
 .playpause.pause:before {
-  display:block;
-  content:"";
-  width:20px;
-  height:20px;
-  border-left:6px solid #fff;
-  border-right:6px solid #fff;
-  border-width:0 6px;
-  }
+  display: block;
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-left: 6px solid #fff;
+  border-right: 6px solid #fff;
+  border-width: 0 6px;
+}
 .playpause:hover {
-  background-color:#00adef;
-  }
+  background-color: #00adef;
+}
 .overlay:hover .playpause {
-  opacity:1;
-  }
-@media only screen and (max-width:768px) {
+  opacity: 1;
+}
+@media only screen and (max-width: 768px) {
   .parent {
-    width:90%;
-    margin:50px auto;
+    width: 90%;
+    margin: 50px auto;
   }
 }
 /* fixes for the iPhone and iPad to show default controls */
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)  {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .overlay iframe {
-    height:100%;
-    top:0;
-    z-index:200;
+    height: 100%;
+    top: 0;
+    z-index: 200;
   }
 }
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   .overlay iframe {
-    height:100%;
-    top:0;
-    z-index:200;
+    height: 100%;
+    top: 0;
+    z-index: 200;
   }
 }
-@media only screen
-and (min-device-width : 375px)
-and (max-device-width : 667px) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
   .overlay iframe {
-    height:100%;
-    top:0;
-    z-index:200;
+    height: 100%;
+    top: 0;
+    z-index: 200;
   }
 }
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 568px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
   .overlay iframe {
-    height:100%;
-    top:0;
-    z-index:200;
+    height: 100%;
+    top: 0;
+    z-index: 200;
   }
 }
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .overlay iframe {
-    height:100%;
-    top:0;
-    z-index:200;
+    height: 100%;
+    top: 0;
+    z-index: 200;
   }
 }
 
 .imageCaption {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
